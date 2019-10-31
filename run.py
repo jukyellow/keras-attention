@@ -79,10 +79,12 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     named_args = parser.add_argument_group('named arguments')
+    
+    DEF_EPOCHS = 5 #50
 
     named_args.add_argument('-e', '--epochs', metavar='|',
                             help="""Number of Epochs to Run""",
-                            required=False, default=50, type=int)
+                            required=False, default=DEF_EPOCHS, type=int)
 
     named_args.add_argument('-g', '--gpu', metavar='|',
                             help="""GPU to use""",
@@ -90,7 +92,7 @@ if __name__ == '__main__':
 
     named_args.add_argument('-p', '--padding', metavar='|',
                             help="""Amount of padding to use""",
-                            required=False, default=50, type=int)
+                            required=False, default=DEF_EPOCHS, type=int)
 
     named_args.add_argument('-t', '--training-data', metavar='|',
                             help="""Location of training data""",

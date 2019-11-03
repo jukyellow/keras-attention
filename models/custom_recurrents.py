@@ -33,6 +33,7 @@ class AttentionDecoder(Recurrent):
             "Neural machine translation by jointly learning to align and translate." 
             arXiv preprint arXiv:1409.0473 (2014).
         """
+        print('AttentionDecoder init');
         self.units = units
         self.output_dim = output_dim
         self.return_probabilities = return_probabilities
@@ -59,7 +60,8 @@ class AttentionDecoder(Recurrent):
           See Appendix 2 of Bahdanau 2014, arXiv:1409.0473
           for model details that correspond to the matrices here.
         """
-
+        print('AttentionDecoder build:' + input_shape);
+        
         self.batch_size, self.timesteps, self.input_dim = input_shape
 
         if self.stateful:
@@ -197,6 +199,8 @@ class AttentionDecoder(Recurrent):
         self.built = True
 
     def call(self, x):
+        print('AttentionDecoder call:' + x);
+        
         # store the whole sequence so we can "attend" to it at each timestep
         self.x_seq = x
 
@@ -226,7 +230,8 @@ class AttentionDecoder(Recurrent):
         return [y0, s0]
 
     def step(self, x, states):
-
+        print('AttentionDecoder step:' + states);
+        
         ytm, stm = states
 
         # repeat the hidden state to the length of the sequence
@@ -287,6 +292,8 @@ class AttentionDecoder(Recurrent):
         """
             For Keras internal compatability checking
         """
+        print('AttentionDecoder compute_output_shape:' + input_shape);
+        
         if self.return_probabilities:
             return (None, self.timesteps, self.timesteps)
         else:
@@ -296,6 +303,8 @@ class AttentionDecoder(Recurrent):
         """
             For rebuilding models on load time.
         """
+        print('AttentionDecoder get_config:');
+        
         config = {
             'output_dim': self.output_dim,
             'units': self.units,

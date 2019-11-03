@@ -60,7 +60,7 @@ class AttentionDecoder(Recurrent):
           See Appendix 2 of Bahdanau 2014, arXiv:1409.0473
           for model details that correspond to the matrices here.
         """
-        print('AttentionDecoder build:' + input_shape);
+        print('AttentionDecoder build:');
         
         self.batch_size, self.timesteps, self.input_dim = input_shape
 
@@ -199,7 +199,7 @@ class AttentionDecoder(Recurrent):
         self.built = True
 
     def call(self, x):
-        print('AttentionDecoder call:' + x);
+        print('AttentionDecoder call:');
         
         # store the whole sequence so we can "attend" to it at each timestep
         self.x_seq = x
@@ -215,7 +215,7 @@ class AttentionDecoder(Recurrent):
         return super(AttentionDecoder, self).call(x)
 
     def get_initial_state(self, inputs):
-        print('inputs shape:', inputs.get_shape())
+        print('AttentionDecoder get_initial_state:')
 
         # apply the matrix on the first time step to get the initial s0.
         s0 = activations.tanh(K.dot(inputs[:, 0], self.W_s))
@@ -230,7 +230,7 @@ class AttentionDecoder(Recurrent):
         return [y0, s0]
 
     def step(self, x, states):
-        print('AttentionDecoder step:' + states);
+        print('AttentionDecoder step:');
         
         ytm, stm = states
 
@@ -292,7 +292,7 @@ class AttentionDecoder(Recurrent):
         """
             For Keras internal compatability checking
         """
-        print('AttentionDecoder compute_output_shape:' + input_shape);
+        print('AttentionDecoder compute_output_shape:');
         
         if self.return_probabilities:
             return (None, self.timesteps, self.timesteps)

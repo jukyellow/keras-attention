@@ -129,8 +129,8 @@ class Data(object):
             Batches are generated randomly.
             :param batch_size: the number of instances to include per batch
         """
-        #instance_id = range(len(self.inputs)) #error
-        instance_id = range(np.prod(np.array(self.inputs).shape)) # [1000, 50]-> 50을 찾아야함, but 위의 코드는 1000을 찾음
+        instance_id = range(len(self.inputs)) #batch size=1 일때는 문제가 될수 
+        #instance_id = range(np.prod(np.array(self.inputs).shape)) # [1000, 50]-> 50을 찾아야함, but 위의 코드는 1000을 찾음
         while True:
             try:
                 batch_ids = random.sample(instance_id, batch_size)

@@ -286,7 +286,8 @@ class AttentionDecoder(Recurrent):
         if self.return_probabilities:
             return at, [yt, st]  # attention weights
         else:
-            return yt, [yt, st]  # predict softmax value
+            #return yt, [yt, st]  # predict softmax value
+            return yt, at, [yt, st]  # predict softmax value
 
     def compute_output_shape(self, input_shape):
         """

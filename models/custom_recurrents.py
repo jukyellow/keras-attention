@@ -295,9 +295,11 @@ class AttentionDecoder(Recurrent):
         print('AttentionDecoder compute_output_shape:');
         
         if self.return_probabilities:
-            return (None, self.timesteps, self.timesteps)
+            #return (None, self.timesteps, self.timesteps)
+            return (None, 1, self.timesteps) # N to 1 data
         else:
-            return (None, self.timesteps, self.output_dim)
+            #return (None, self.timesteps, self.output_dim)
+            return (None, 1, self.output_dim) # N to 1 data
         
     def get_config(self):
         """

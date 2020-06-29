@@ -296,10 +296,10 @@ class AttentionDecoder(Recurrent):
         
         if self.return_probabilities:
             #return (None, self.timesteps, self.timesteps)
-            return (None, 10, self.timesteps) # N to 1 data
+            return (None, 1, self.timesteps) # N to 1 data
         else:
             #return (None, self.timesteps, self.output_dim)
-            return (None, 10, self.output_dim) # N to 1 data
+            return (None, 1, self.output_dim) # N to 1 data
         
     def get_config(self):
         """
